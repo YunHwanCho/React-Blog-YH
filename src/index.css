@@ -213,7 +213,8 @@ footer a:focus {
 .profile__logout {
   color: gray;
   font-size: 16px;
-  text-decoration: none;
+  text-decoration: underline;
+  cursor: pointer;
 }
 .profile__logout:hover,
 .profile__logout:focus {
@@ -443,4 +444,20 @@ input:checked + .carousel__slide-container .nav label {
 
 .form__error {
   color: red;
+}
+
+/*Loader*/
+
+.Loader {
+  width: 48px;
+  height: 48px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  border: 5px solid #2563eb;
+  border-radius: 50%;
+  z-index: 9999;
 }
