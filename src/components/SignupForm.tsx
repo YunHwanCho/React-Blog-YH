@@ -9,6 +9,7 @@ export default function SignupForm() {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [passwordconfirm, setPasswordConfirm] = useState<string>("");
+
   const navigate = useNavigate();
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -67,6 +68,7 @@ export default function SignupForm() {
         <form onSubmit={onSubmit} className="form login">
           <div className="header__logo login__logo">Yunhwan Blog</div>
           <h3 style={{ color: "blue" }}>회원가입</h3>
+
           <div className="form__block">
             <label htmlFor="email">이메일</label>
             <input

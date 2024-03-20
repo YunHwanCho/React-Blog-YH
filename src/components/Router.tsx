@@ -1,6 +1,5 @@
 import { Route, Routes, Navigate } from "react-router-dom";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+
 import Home from "../pages/home/index";
 import Post from "../pages/post";
 import PostPage from "../pages/post/detail";

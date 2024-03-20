@@ -63,8 +63,13 @@ footer a:focus {
 .post__list,
 .post__detail {
   min-height: 90vh;
+  display: flex;
+  flex-wrap: wrap;
+
+  justify-content: center;
+  align-items: center;
   padding: 20px 40px;
-  text-align: center;
+
   max-width: 680px;
   margin: 0 auto;
   text-align: left;
@@ -76,6 +81,9 @@ footer a:focus {
 }
 
 .post__box {
+  flex: 1 1 auto;
+  min-height: auto;
+  margin: 10px;
   padding-top: 24px;
   padding-bottom: 24px;
   border-top: 1px solid #f2f2f2;
@@ -460,4 +468,10 @@ input:checked + .carousel__slide-container .nav label {
   border: 5px solid #2563eb;
   border-radius: 50%;
   z-index: 9999;
+}
+
+@media screen and (max-width: 480px) {
+  .Header {
+    width: fit-content;
+  }
 }

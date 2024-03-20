@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import PostList from "./PostList";
 import { getAuth, signOut } from "firebase/auth";
 import { app } from "firebaseApp";
