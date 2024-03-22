@@ -65,15 +65,12 @@ footer a:focus {
   min-height: 90vh;
   display: flex;
   flex-wrap: wrap;
-
   justify-content: center;
   align-items: center;
-  padding: 20px 40px;
-
-  max-width: 680px;
-  margin: 0 auto;
+  padding: 5px;
   text-align: left;
   line-height: 24px;
+  margin: 10px;
 }
 .post__list a {
   text-decoration: none;
@@ -81,17 +78,20 @@ footer a:focus {
 }
 
 .post__box {
-  flex: 1 1 auto;
-  min-height: auto;
   margin: 10px;
-  padding-top: 24px;
-  padding-bottom: 24px;
-  border-top: 1px solid #f2f2f2;
+  border: 1px solid #f2f2f2;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.post__img {
+  padding: 0;
+  width: 100%;
+  border-radius: 20px;
 }
 
 .post__navigation {
   display: flex;
-  max-width: 680px;
+
   gap: 12px;
   font-size: 16px;
   color: gray;
@@ -106,10 +106,30 @@ footer a:focus {
 
 .post__profile-box {
   display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 14px;
+  padding: 10px 10px;
+  align-items: center;
+  margin-bottom: 0px;
+  border-top: 1px solid #f2f2f2;
+}
+.post__box-left {
+  flex: 1;
+  display: flex;
   gap: 8px;
   font-size: 14px;
   align-items: center;
-  margin-bottom: 10px 0px;
+}
+.post__util-box {
+  align-items: center;
+  justify-content: end;
+  flex: 1;
+  display: flex;
+  flex-direction: row-reverse;
+  font-size: 14px;
+  gap: 8px;
+  color: gray;
 }
 
 .post__profile {
@@ -123,7 +143,7 @@ footer a:focus {
   color: gray;
 }
 
-.post_title {
+.post__title {
   font-size: 20px;
   font-weight: 600;
   margin: 14px, 0px;
@@ -131,19 +151,12 @@ footer a:focus {
 
 .post__text {
   color: dimgray;
-  font-size: 16px;
+  font-size: 15px;
 }
 
 .post__list a {
   text-decoration: none;
   color: black;
-}
-.post__util-box {
-  display: flex;
-  flex-direction: row-reverse;
-  font-size: 14px;
-  gap: 8px;
-  color: gray;
 }
 
 .post__edit a:hover,
@@ -182,6 +195,13 @@ footer a:focus {
 }
 .post__edit a {
   text-decoration: none;
+  color: gray;
+}
+.post__no-post {
+  padding: 24px;
+  border: 1px solid #f2f2f2;
+  border-radius: 15px;
+  text-align: center;
   color: gray;
 }
 
@@ -233,8 +253,15 @@ footer a:focus {
 
 .carousel {
   margin: 0 auto;
-  max-width: 980px;
+  padding-left: 50px;
+  padding-right: 50px;
   margin-top: 36px;
+}
+@media (max-width: 768px) {
+  .carousel {
+    padding-left: 20px; /* Adjusted padding */
+    padding-right: 20px; /* Adjusted padding */
+  }
 }
 
 ul.carousel__slides {
@@ -245,6 +272,11 @@ ul.carousel__slides {
   padding: 0;
   overflow: hidden;
   list-style: none;
+}
+@media (max-width: 480px) {
+  ul.carousel__slides {
+    height: 200px; /* 높이를 줄임 */
+  }
 }
 
 .carousel__slides * {
