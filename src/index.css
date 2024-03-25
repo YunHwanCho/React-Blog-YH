@@ -60,8 +60,7 @@ footer a:focus {
   color: black;
 }
 
-.post__list,
-.post__detail {
+.post__list {
   min-height: 90vh;
   display: flex;
   flex-wrap: wrap;
@@ -72,16 +71,37 @@ footer a:focus {
   line-height: 24px;
   margin: 10px;
 }
+.post__content-box {
+  display: flex;
+}
+
+.post__detail {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  min-height: 90vh;
+  text-align: center;
+  margin-top: 10vh;
+  padding: 20px;
+
+  line-height: 24px;
+}
 .post__list a {
   text-decoration: none;
   color: black;
 }
-
+.post__box-detail {
+  overflow: hidden;
+  text-align: left;
+  margin-left: 20px;
+  width: 50%;
+}
 .post__box {
   margin: 10px;
   border: 1px solid #f2f2f2;
   border-radius: 20px;
   overflow: hidden;
+  text-align: center;
 }
 .post__img {
   padding: 0;
@@ -104,6 +124,16 @@ footer a:focus {
   font-weight: 600;
 }
 
+.post__detail-profile {
+  display: flex;
+  justify-content: left;
+  gap: 8px;
+  font-size: 14px;
+  padding: 10px 10px;
+  align-items: center;
+  margin-bottom: 0px;
+  margin-top: 5vh;
+}
 .post__profile-box {
   display: flex;
   justify-content: space-between;
@@ -123,12 +153,13 @@ footer a:focus {
 }
 .post__util-box {
   align-items: center;
-  justify-content: end;
+  justify-content: left;
   flex: 1;
   display: flex;
   flex-direction: row-reverse;
   font-size: 14px;
   gap: 8px;
+  padding: 10px 10px;
   color: gray;
 }
 
@@ -144,14 +175,31 @@ footer a:focus {
 }
 
 .post__title {
-  font-size: 20px;
+  padding: 24px;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 24px;
+}
+.post__title-list {
+  font-size: 30px;
   font-weight: 600;
-  margin: 14px, 0px;
+  padding: 10px 10px;
 }
 
 .post__text {
   color: dimgray;
   font-size: 15px;
+  padding: 10px 10px;
+  margin-top: 5vh;
+  text-align: left;
+}
+.post__text-list {
+  font-size: 15px;
+  color: dimgray;
+  padding: 10px 10px;
+}
+.post__text--pre--wrap {
+  white-space: pre-wrap;
 }
 
 .post__list a {
@@ -176,23 +224,16 @@ footer a:focus {
 
 /*post__detail*/
 
-.post__detail .post__title {
-  font-size: 30px;
-  line-height: 40px;
-}
-
 .post__detail .post__util-box {
   border-top: 1px solid #f2f2f2;
   border-bottom: 1px solid #f2f2f2;
-  padding: 10px 0px;
+  padding: 10px 10px;
   flex-direction: row;
 }
 .post__detail .post__profile-box {
   padding: 10px 0px;
 }
-.post__detail .post__text {
-  padding: 20px 0px;
-}
+
 .post__edit a {
   text-decoration: none;
   color: gray;

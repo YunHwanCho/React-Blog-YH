@@ -10,8 +10,8 @@ interface PostListProps {
 }
 type Tabtype = "all" | "my";
 
-interface PostProps {
-  id: string;
+export interface PostProps {
+  id?: string;
   email: string;
   content: string;
   summary: string;
@@ -66,12 +66,14 @@ export default function PostList({ hasNavigation = true }: PostListProps) {
                 <div className="post__img">
                   <img src={dog}></img>
                 </div>
-                <div className="post__content-top">
-                  <div className="post__title">{post?.title}</div>
-                  <div className="post__text">{post?.content}</div>
-                </div>
-                <div className="post__content-bottom">
-                  <div className="post__date">{post?.createdAt}</div>
+                <div className="post__content-box">
+                  <div className="post__content-top">
+                    <div className="post__title-list">{post?.title}</div>
+                    <div className="post__text-list">{post?.summary}</div>
+                  </div>
+                  <div className="post__content-bottom">
+                    <div className="post__date">{post?.createdAt}</div>
+                  </div>
                 </div>
 
                 <div className="post__profile-box">
