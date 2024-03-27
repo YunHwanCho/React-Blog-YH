@@ -64,7 +64,7 @@ footer a:focus {
   min-height: 90vh;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   padding: 5px;
   text-align: left;
@@ -178,7 +178,7 @@ footer a:focus {
   padding: 24px;
   font-size: 40px;
   font-weight: 700;
-  line-height: 24px;
+  line-height: 50px;
 }
 .post__title-list {
   font-size: 30px;

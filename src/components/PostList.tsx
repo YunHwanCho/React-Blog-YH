@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import dog from "../img/dog.jpg";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, deleteDoc, doc, getDocs } from "firebase/firestore";
 import { db } from "firebaseApp";
 import AuthContext from "context/AuthContext";
+import { toast } from "react-toastify";
 
 interface PostListProps {
   hasNavigation?: boolean;
@@ -17,22 +18,38 @@ export interface PostProps {
   summary: string;
   title: string;
   createdAt: string;
+  updatedAt?: string;
+  uid: string;
 }
 
 export default function PostList({ hasNavigation = true }: PostListProps) {
   const [activeTab, setActiveTab] = useState<Tabtype>("all");
   const [posts, setPosts] = useState<PostProps[]>([]);
   const { user } = useContext(AuthContext);
-  const getPost = async () => {
+  const navigate = useNavigate();
+
+  const getPosts = async () => {
     const datas = await getDocs(collection(db, "posts"));
+    setPosts([]);
+    // 초기화를 안해주니 변경사항이 누적되는 걸 볼 수 있었음!!
     datas?.forEach((doc) => {
       const datObj = { ...doc.data(), id: doc.id };
       setPosts((prev) => [...prev, datObj as PostProps]);
     });
   };
   useEffect(() => {
-    getPost();
+    getPosts();
   }, []);
+
+  const handleDelete = async (id: string) => {
+    const confirm = window.confirm("삭제하시겠습니까?");
+    if (confirm && id) {
+      await deleteDoc(doc(db, "posts", id));
+      toast.success("게시글이 삭제됐습니다.");
+      getPosts();
+      navigate("/");
+    }
+  };
 
   return (
     <>
@@ -84,7 +101,15 @@ export default function PostList({ hasNavigation = true }: PostListProps) {
 
                   {post?.email === user?.email && (
                     <div className="post__util-box">
-                      <div className="post__delete">삭제</div>
+                      <div
+                        className="post__delete"
+                        role="presentation"
+                        onClick={() => {
+                          handleDelete(post.id as string);
+                        }}
+                      >
+                        삭제
+                      </div>
                       <Link
                         to={`/posts/edit/${post?.id}`}
                         className="post__edit"
