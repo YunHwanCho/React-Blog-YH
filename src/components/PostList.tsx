@@ -1,7 +1,15 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import dog from "../img/dog.jpg";
-import { collection, deleteDoc, doc, getDocs } from "firebase/firestore";
+import {
+  collection,
+  deleteDoc,
+  doc,
+  getDocs,
+  orderBy,
+  query,
+  where,
+} from "firebase/firestore";
 import { db } from "firebaseApp";
 import AuthContext from "context/AuthContext";
 import { toast } from "react-toastify";
@@ -29,9 +37,20 @@ export default function PostList({ hasNavigation = true }: PostListProps) {
   const navigate = useNavigate();
 
   const getPosts = async () => {
-    const datas = await getDocs(collection(db, "posts"));
     setPosts([]);
     // 초기화를 안해주니 변경사항이 누적되는 걸 볼 수 있었음!!
+    let postsRef = collection(db, "posts");
+    let postsQuery;
+    if (activeTab == "my" && user) {
+      postsQuery = query(
+        postsRef,
+        where("uid", "==", "user.uid"),
+        orderBy("createdAt", "desc")
+      );
+    } else {
+      postsQuery = query(postsRef, orderBy("createdAt", "desc"));
+    }
+    const datas = await getDocs(postsQuery);
     datas?.forEach((doc) => {
       const datObj = { ...doc.data(), id: doc.id };
       setPosts((prev) => [...prev, datObj as PostProps]);
@@ -86,11 +105,10 @@ export default function PostList({ hasNavigation = true }: PostListProps) {
                 <div className="post__content-box">
                   <div className="post__content-top">
                     <div className="post__title-list">{post?.title}</div>
-                    <div className="post__text-list">{post?.summary}</div>
-                  </div>
-                  <div className="post__content-bottom">
+                    <div className="post__title-summary">{post?.summary}</div>
                     <div className="post__date">{post?.createdAt}</div>
                   </div>
+                  <div className="post__content-bottom"></div>
                 </div>
 
                 <div className="post__profile-box">
